@@ -46,4 +46,9 @@ public class HoldingCard {
     public Card getFirstCard() {
         return holdingCard.get(0);
     }
+
+    @Override
+    public String toString() {
+        return holdingCard.toString();
+    }
 }

@@ -27,5 +27,9 @@ public abstract class Participant {
         return holdingCard;
     }
 
+    public boolean isBust() {
+        return holdingCard.isBust();
+    }
+
     public abstract boolean isFinished();
 }

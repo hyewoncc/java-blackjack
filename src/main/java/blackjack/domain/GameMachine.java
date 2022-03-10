@@ -8,4 +8,8 @@ public class GameMachine {
         return new BlackJackGame(playerNames);
     }
 
+    public static DrawCommand createDrawCommand(String inputValue) {
+        return DrawCommand.from(inputValue);
+    }
+
 }
