@@ -1,4 +1,4 @@
-package blackjack.domain;
+package blackjack.domain.card;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +17,10 @@ public class HoldingCard {
     }
 
     public boolean isBust() {
-        return calculateTotal() > BLACK_JACK_SCORE;
+        return calculateScore() > BLACK_JACK_SCORE;
     }
 
-    public int calculateTotal() {
+    public int calculateScore() {
         int sum = sum();
         if (hasAce() && sum <= 11) {
             sum += 10;

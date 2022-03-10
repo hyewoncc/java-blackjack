@@ -1,5 +1,7 @@
 package blackjack.domain;
 
+import blackjack.domain.card.Card;
+import blackjack.domain.card.HoldingCard;
 import java.util.List;
 
 public class Dealer extends Participant {
@@ -14,6 +16,6 @@ public class Dealer extends Participant {
     }
 
     public boolean isFinished() {
-        return super.getHoldingCard().calculateTotal() >= DEALER_MIN_TOTAL;
+        return super.getHoldingCard().calculateScore() >= DEALER_MIN_TOTAL;
     }
 }

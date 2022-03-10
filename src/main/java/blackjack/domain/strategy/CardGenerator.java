@@ -1,6 +1,6 @@
 package blackjack.domain.strategy;
 
-import blackjack.domain.Card;
+import blackjack.domain.card.Card;
 import java.util.List;
 
 public interface CardGenerator {

@@ -3,9 +3,12 @@ package blackjack.controller;
 import blackjack.domain.BlackJackGame;
 import blackjack.domain.DrawCommand;
 import blackjack.domain.GameMachine;
-import blackjack.domain.HoldingCard;
+import blackjack.domain.card.HoldingCard;
+import blackjack.dto.ParticipantDto;
+import blackjack.dto.ScoreResultDto;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
+import java.util.List;
 
 public class BlackJackController {
 
@@ -14,7 +17,9 @@ public class BlackJackController {
         OutputView.printInitialCardStatus(blackJackGame.getParticipantsDto());
 
         blackJackGame = runAllPlayersTurn(blackJackGame);
-        OutputView.printPlayerFinalCards();
+        OutputView.printPlayerFinalCards(GameMachine.createPlayerFinalCardsAndScore(blackJackGame));
+        ScoreResultDto finalScore = GameMachine.createFinalScore(blackJackGame);
+        OutputView.printFinalScore(finalScore);
     }
 
     private BlackJackGame runAllPlayersTurn(BlackJackGame blackJackGame) {

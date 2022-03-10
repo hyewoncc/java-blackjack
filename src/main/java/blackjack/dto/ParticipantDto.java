@@ -1,4 +1,7 @@
-package blackjack.domain;
+package blackjack.dto;
+
+import blackjack.domain.card.HoldingCard;
+import blackjack.domain.Participant;
 
 public class ParticipantDto {
     private final String name;
@@ -21,11 +24,7 @@ public class ParticipantDto {
         return cards;
     }
 
-    @Override
-    public String toString() {
-        return "ParticipantDto{" +
-                "name='" + name + '\'' +
-                ", cards=" + cards +
-                '}';
+    public int getSum() {
+        return cards.calculateScore();
     }
 }

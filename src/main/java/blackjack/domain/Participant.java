@@ -1,5 +1,7 @@
 package blackjack.domain;
 
+import blackjack.domain.card.Card;
+import blackjack.domain.card.HoldingCard;
 import java.util.List;
 
 public abstract class Participant {
@@ -29,6 +31,14 @@ public abstract class Participant {
 
     public boolean isBust() {
         return holdingCard.isBust();
+    }
+
+    public int getScore() {
+        int score = holdingCard.calculateScore();
+        if (score > 21) {
+            return 0;
+        }
+        return score;
     }
 
     public abstract boolean isFinished();

@@ -1,8 +1,11 @@
 package blackjack.domain;
 
-import blackjack.view.OutputView;
+import blackjack.domain.card.CardDeck;
+import blackjack.domain.card.HoldingCard;
+import blackjack.dto.ParticipantDto;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class BlackJackGame {
@@ -54,8 +57,16 @@ public class BlackJackGame {
             dealer.receiveCard(CardDeck.drawCard());
             System.out.println("딜러는 16이하라 한장의 카드를 더 받았습니다.");
         }
-        System.out.println(dealer.getHoldingCard());
+        System.out.println();
     }
 
+    public Map<GameResult, Integer> getDealerResult() {
+        int score = dealer.getScore();
+        return players.getDealerGameResult(score);
+    }
 
+    public Map<String, GameResult> getPlayersResult() {
+        int score = dealer.getScore();
+        return players.getPlayersGameResult(score);
+    }
 }

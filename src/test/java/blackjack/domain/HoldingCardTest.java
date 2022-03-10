@@ -1,5 +1,9 @@
 package blackjack.domain;
 
+import blackjack.domain.card.Card;
+import blackjack.domain.card.CardNumber;
+import blackjack.domain.card.HoldingCard;
+import blackjack.domain.card.Symbol;
 import java.util.ArrayList;
 import java.util.List;
 import org.assertj.core.api.Assertions;
@@ -56,7 +60,7 @@ class HoldingCardTest {
                 List.of(new Card(CardNumber.ACE, Symbol.CLOVER), new Card(CardNumber.ACE, Symbol.SPADE),
                         new Card(CardNumber.ACE, Symbol.HEART), new Card(CardNumber.ACE, Symbol.DIAMOND)));
         HoldingCard holdingCard = new HoldingCard(cards);
-        int result = holdingCard.calculateTotal();
+        int result = holdingCard.calculateScore();
         Assertions.assertThat(result).isEqualTo(14);
     }
 
@@ -68,7 +72,7 @@ class HoldingCardTest {
                         new Card(CardNumber.ACE, Symbol.HEART), new Card(CardNumber.ACE, Symbol.DIAMOND)));
         HoldingCard holdingCard = new HoldingCard(cards);
         holdingCard.add(new Card(CardNumber.SEVEN, Symbol.DIAMOND));
-        int result = holdingCard.calculateTotal();
+        int result = holdingCard.calculateScore();
         Assertions.assertThat(result).isEqualTo(21);
     }
 
@@ -81,7 +85,7 @@ class HoldingCardTest {
         HoldingCard holdingCard = new HoldingCard(cards);
         holdingCard.add(new Card(CardNumber.SEVEN, Symbol.DIAMOND));
         holdingCard.add(new Card(CardNumber.TEN, Symbol.DIAMOND));
-        int result = holdingCard.calculateTotal();
+        int result = holdingCard.calculateScore();
         Assertions.assertThat(result).isEqualTo(21);
     }
 }

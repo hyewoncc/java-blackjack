@@ -1,6 +1,8 @@
 package blackjack.domain;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Participants {
     private final List<Participant> participants;
@@ -22,10 +24,6 @@ public class Participants {
         return participants;
     }
 
-    public int getNowTurnIndex() {
-        return nowTurnIndex;
-    }
-
     public boolean isFinished() {
         return nowTurnIndex >= participants.size();
     }
@@ -36,5 +34,23 @@ public class Participants {
 
     public void skipTurn() {
         nowTurnIndex++;
+    }
+
+    public Map<GameResult, Integer> getDealerGameResult(int dealerScore) {
+        Map<GameResult, Integer> gameResult = GameResult.createInitMap();
+        for (Participant participant : participants) {
+            GameResult result = GameResult.compare(dealerScore, participant.getScore());
+            gameResult.put(result, gameResult.getOrDefault(result,0) + 1);
+        }
+        return gameResult;
+    }
+
+    public Map<String, GameResult> getPlayersGameResult(int dealerScore) {
+        HashMap<String, GameResult> playersGameResult = new HashMap<>();
+        for (Participant participant : participants) {
+            GameResult result = GameResult.compare(participant.getScore(), dealerScore);
+            playersGameResult.put(participant.getName(), result);
+        }
+        return playersGameResult;
     }
 }
